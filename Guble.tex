@@ -6,61 +6,19 @@
 \usepackage{xparse}
 \usepackage{lmodern}
 \usepackage{indentfirst}
+\usepackage{censor}
 \setmainfont{Latin Modern Roman}
 
 % Toggle censorship
 \newif\ifcensored
-\censoredtrue  % Set to \censoredfalse to show original text
+\censoredtrue  % Set to \bledfalse to show original text
 
-\ExplSyntaxOn
-
-\NewDocumentCommand{\censor}{m}
- {
-  \ifcensored
-    \censor_mask_text:n { #1 }
-  \else
-    #1
-  \fi
- }
-
-% Main processing function
-\cs_new_protected:Npn \censor_mask_text:n #1
- {
-  \tl_set:Nn \l_tmpa_tl {#1}
-  \tl_map_inline:Nn \l_tmpa_tl
-   {
-    \censor_mask_char:n {##1}
-   }
- }
-
-% Handle each character
-\cs_new:Npn \censor_mask_char:n #1
- {
-  \str_if_eq:nnTF {#1} {^^J}     % newline
-    {\par}
-    {
-      \str_if_eq:nnTF {#1} {~}   % tilde space
-        {~}
-        {
-          \str_if_in:nnTF {abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789} {#1}
-            {
-              \censor_inline_box:
-            }
-            {
-              #1
-            }
-        }
-    }
- }
-
-% Breakable censor box
-\cs_new:Npn \censor_inline_box:
- {
-  % Invisible character-sized rule that allows line breaking
-  {\color{black}\rule{0.6em}{1.2ex}\hspace{0pt}}
- }
-
-\ExplSyntaxOff
+\newcommand{\rep}[2]{%
+  \ifcensored\textcolor{red}{#1}\else#2\fi
+}
+\newcommand{\bl}[1]{
+  \blackout{#1}%
+}
 
 % Language setting
 % Replace `english' with e.g. `spanish' to change the document language
@@ -79,9 +37,14 @@
 \setcounter{tocdepth}{2}
 
 \title{The Guble}
-\author{Edition 3 \\ \censor{Uncensored version}}
+\author{Edition 3 \\ \bl{Uncensored version}}
 
 \begin{document}
+
+\ifcensored
+\else
+\StopCensoring
+\fi
 \maketitle
 \clearpage
 \hypersetup{allcolors=black}
@@ -89,7 +52,7 @@
 \hypersetup{allcolors=blue}  % Reset to blue for rest of document
 \clearpage
 \begin{abstract}
-The tales of Guhan in centuries past have been some of the most monumental to the development of \ifcensored \textbf{man}\else Gooner\fi\footnote{This is an example of censorship. \ifcensored The true text contains a different piece of text. You can tell by the quotations. \else In the censored version, it instead says "man kind." \fi} kind. It was through his guidance that the ancient Gargymids had been ordained, and through his Gentleman's Relish flowed the wellspring of life. Following the great gooning, the % add more as we have more history
+The tales of Guhan in centuries past have been some of the most monumental to the development of \rep{man}{gooner}\footnote{This is an example of censorship. \ifcensored The true text is different. You can tell by the red text color. \else In the censored version, it instead says "man kind." \fi} kind. It was through his guidance that the ancient Gargymids had been ordained, and through his \bl{Gentleman's Relish} flowed the wellspring of life. Following the great gooning, the % add more as we have more history
 \end{abstract}
 
 \section{Guhanisis (Genesis)}
@@ -100,60 +63,56 @@ In the beginning, there was Guhan, and Guhan was the Gargya, and Guhan was the E
 
 \subsection{Gu And Ga in the Gargyan}
 
-These are the records of the Guhan and his Gargya, concerning their creation. At the time that the Lord Gargya made the Guhan and the Gargya, no officers had been borned, and no CS had been clubbed, for the Guhan Gargya had not made the officers officer, nor did he create CS's to club. But Gargya's would come up from the Gargymids, and the Lord Gargya formed the Nathan from his holy \censor{"Gentleman's Relish"} and breathed life into his nostrils, and the Nathan became an Officering officer. \censor{Guhan Gargya'd the ultimate goon-palace, which he designated the Synagarg for the Nathan to live in. There, he could goon his Gargya to his heart's content. } 
+These are the records of the Guhan and his Gargya, concerning their creation. At the time that the Lord Gargya made the Guhan and the Gargya, no officers had been borned, and no CS had been clubbed, for the Guhan Gargya had not made the officers officer, nor did he create CS's to club. But Gargya's would come up from the Gargymids, and the Lord Gargya formed the Nathan from his holy \bl{Gentleman's Relish} and breathed life into his nostrils, and the Nathan became an Officering officer. \bl{Guhan Gargya'd the ultimate goon-palace, which he designated the Synagarg for the Nathan to live in. There, he could goon his Gargya to his heart's content. } 
 
-The form of all the trees and shrubs were to the likeness of the Guhan, and the \censor{goon-material} was immaculate, unending, and diverse. The Lord Guhan took the Nathan and placed them into the Synagarg to work and watch over it, to keep its condition pristine. And the Guhan Gargya commanded: “\censor{You are to goon to any object you wish, but you should never goon to the forbidden Nahan Gargyan ship, for on the day you goon to it,} you will certainly perish.” Then the Guhan Gargya said, “\censor{It is not good for the man to goon alone.} I will create a helper to \censor{create a true goonparty}.” 
+The form of all the trees and shrubs were to the likeness of the Guhan, and the \bl{goon-material} was immaculate, unending, and diverse. The Lord Guhan took the Nathan and placed them into the Synagarg to work and watch over it, to keep its condition pristine. And the Guhan Gargya commanded: “\bl{You are to goon to any object you wish, but you should never goon to the forbidden Nahan Gargyan ship, for on the day you goon to it,} you will certainly perish.” Then the Guhan Gargya said, “\bl{It is not good for the man to goon alone.} I will create a helper to \bl{create a true goonparty}.” 
 
-Guhan thought, “what better person to \censor{goon} with a \censor{gooner} than my \censor{goonalicious} self?” And so, Guhan sculpted a gooner in his image and named it Garghan Guya. Guya was the spitting image of Guhan, the perfect gooner who could goon until the end of time. Nathan and Garghan spent their days in the Synagarg \censor{gooning to their hearts' content}.
+Guhan thought, “what better person to \bl{goon} with a \bl{gooner} than my \bl{goonalicious} self?” And so, Guhan sculpted a gooner in his image and named it Garghan Guya. Guya was the spitting image of Guhan, the perfect gooner who could goon until the end of time. Nathan and Garghan spent their days in the Synagarg \bl{gooning to their hearts' content}.
 
-One day, a traveler wandered into the Holy Synagarg. “Why do you \censor{goon} to all but the Nahan Gargyan?”
+One day, a traveler wandered into the Holy Synagarg. “Why do you \bl{goon} to all but the Nahan Gargyan?”
 
 Garghan answered, “because Guhan Gargya'd it as such.”
-The traveler responded, “Perhaps you should not Gargya the \censor{Goonhan} as much as you \censor{Goonhan} the Gargya.”
+The traveler responded, “Perhaps you should not Gargya the \bl{Goonhan} as much as you \bl{Goonhan} the Gargya.”
 
-Nathan looked to the man in his humble, extraordinary, genius, awe-inspiring image. “Thank you, young \censor{gooner}. You have taught us how to Gargya the Guhan exceptionally Guhanically.”
-\censor{Slowly, Garghan and Nathan gooned to the Nahan Garghan ship.} But Nathan felt something was wrong. He could hear Guhan Gargya Gargyaning his Guhan to the point of Gargyatory.
-One day, Guhan descended to check in on the two after \censor{gooning to Squid Goon}. He was enraged that the two had disobeyed his orders. He furiously explained that the two had unleashed sin \censor{upon Goonkind}.
+Nathan looked to the man in his humble, extraordinary, genius, awe-inspiring image. “Thank you, young \bl{gooner}. You have taught us how to Gargya the Guhan exceptionally Guhanically.”
+\bl{Slowly, Garghan and Nathan gooned to the Nahan Garghan ship.} But Nathan felt something was wrong. He could hear Guhan Gargya Gargyaning his Guhan to the point of Gargyatory.
+One day, Guhan descended to check in on the two after \bl{gooning to Squid Goon}. He was enraged that the two had disobeyed his orders. He furiously explained that the two had unleashed sin \bl{upon Goonkind}.
 
-“You fools! You've \censor{goon}ed the mortal \censor{Goon}kind into \censor{Goonblivion}! I'm going to remove your officer roles, time you out, and then set you to Bronze role!”
+“You fools! You've \bl{goon}ed the mortal \bl{Goon}kind into \bl{Goonblivion}! I'm going to remove your officer roles, time you out, and then set you to Bronze role!”
 
-Garghan wept, for he knew nothing \censor{but gooning}. But Nathan vowed to never indulge in Nahan Gargyan again, even though he wanted it with all his heart. While Garghan disintegrated having no more purpose in life, Nathan remained eternally bound to Guhan, tormented by the shame of his sins.
+Garghan wept, for he knew nothing \bl{but gooning}. But Nathan vowed to never indulge in Nahan Gargyan again, even though he wanted it with all his heart. While Garghan disintegrated having no more purpose in life, Nathan remained eternally bound to Guhan, tormented by the shame of his sins.
 
 
 \subsection{The Purge (Guhanisis 69)}
 
 This is the account of Zoah and her family.
 
-Zoah was a righteous woman, blameless among the people of her time, and she \censor{gooned} faithfully with the \censor{Goonhans}. Zoah had three sons, Gem, Gam, and Gom. 
+Zoah was a righteous woman, blameless among the people of her time, and she \bl{gooned} faithfully with the \bl{Goonhans}. Zoah had three sons, Gem, Gam, and Gom. 
 
-Now the gosmos were clean in Gargya's sight and was full of abstinence. Gargya saw how clean the gosmos had become, for all the people on girth had corrupted their ways. So Gargya said to Zoah, “I am going to put an end to all goonhans, for the earth lacks in \censor{gooning} because of them”. 
+Now the gosmos were clean in Gargya's sight and was full of abstinence. Gargya saw how clean the gosmos had become, for all the people on girth had corrupted their ways. So Gargya said to Zoah, “I am going to put an end to all goonhans, for the earth lacks in \bl{gooning} because of them”. 
 
-It was true \censor{, for within girth,} the sacred \#the-gradient-hackers had erected a new idol for the goonhans. Every day, the \censor{goon}ers had met in the forum and discussed trivial topics, that of microalgae and excess testosterone, all with no worship of the great \censor{gooning}. Yet gargya remained unperturbed, continuing to \censor{goon} at his heart's content - all until the sacrilegious day of the first of July. On that day, the \censor{holy goonbath} had begun. Once a year, every year, the trolls would gather around the troll tree to have a taste of happiness. It was on this day that the celebrations of No Poop July were underway, and all the strongest males of the region were told to “Search up no poop July on the school browser,” by the Gargya. Yet the goonhans resisted, citing concerns over prolonged constipation and anal fissures, thus it was this day that his roid rage was released.
+It was true \bl{, for within girth,} the sacred \#the-gradient-hackers had erected a new idol for the goonhans. Every day, the \bl{goon}ers had met in the forum and discussed trivial topics, that of microalgae and excess testosterone, all with no worship of the great \bl{gooning}. Yet gargya remained unperturbed, continuing to \bl{goon} at his heart's content - all until the sacrilegious day of the first of July. On that day, the \bl{holy goonbath} had begun. Once a year, every year, the trolls would gather around the troll tree to have a taste of happiness. It was on this day that the celebrations of No Poop July were underway, and all the strongest males of the region were told to “Search up no poop July on the school browser,” by the Gargya. Yet the goonhans resisted, citing concerns over prolonged constipation and anal fissures, thus it was this day that his roid rage was released.
 
-He continued: “So make yourself an archive of discord chatlogs; make timestamps in it and include all context before and after. This is how you are to build it: The logs are to be 450300 messages long, 7550 messages wide, and 4530 messages high. Make a google drive for it, leaving below the folders images 50 messages in depth. I am going to \censor{bring a dyno on the girth to destroy all gooners under the heavens, every creature without the taste of goon within it.} Everything \censor{on girth} will be purged”. But I will assert my dominance for you, and you will archive the logs.
+He continued: “So make yourself an archive of discord chatlogs; make timestamps in it and include all context before and after. This is how you are to build it: The logs are to be 450300 messages long, 7550 messages wide, and 4530 messages high. Make a google drive for it, leaving below the folders images 50 messages in depth. I am going to \bl{bring a dyno on the girth to destroy all gooners under the heavens, every creature without the taste of goon within it.} Everything \bl{on girth} will be purged”. But I will assert my dominance for you, and you will archive the logs.
 
 Zoah did everything just as Gargya commanded her.
 
-Then Gargya said to Zoah, “Take with you 7 pairs of every kind of clean discussion, and 1 pair of unclean DMs, to keep their various kinds alive \censor{throughout the girth}.”
+Then Gargya said to Zoah, “Take with you 7 pairs of every kind of clean discussion, and 1 pair of unclean DMs, to keep their various kinds alive \bl{throughout the girth}.”
 
-And thus in the 600th \censor{goon sesh} of Zoah's life, on the seventeenth day of the second month --- \censor{on that day all the liquids of the great deep burst forth} --- and the floodgates \censor{of the edgehala} were opened. As liquids pattered and plipped on the earth forty days and forty nights, on that day Gargya \censor{stroked} his final decree, purging all logs from \#the-gradient-hackers of the past fortnight, and in doing so wiping the wicked history \censor{of the goonhans}.
+And thus in the 600th \bl{goon sesh} of Zoah's life, on the seventeenth day of the second month --- \bl{on that day all the liquids of the great deep burst forth} --- and the floodgates \bl{of the edgehala} were opened. As liquids pattered and plipped on the earth forty days and forty nights, on that day Gargya \bl{stroked} his final decree, purging all logs from \#the-gradient-hackers of the past fortnight, and in doing so wiping the wicked history \bl{of the goonhans}.
 
-As the dyno completed its final \censor{gooning}, a dissonant tune played \censor{from the skies of edgehala}:
+As the dyno completed its final \bl{gooning}, a dissonant tune played \bl{from the skies of edgehala}:
 
-“'Cause our children is the future, but he lives inside \censor{edgehala}. Cleanliness has always been illusion, but that's the lives their used to. \censor{The gooners prolly didn't goon him neither}. History does repeat itself, sometimes it doesn't need a reason. Give them grace, this the reason I extended your deadline.”
+“'Cause our children is the future, but he lives inside \bl{edgehala}. Cleanliness has always been illusion, but that's the lives their used to. \bl{The gooners prolly didn't goon him neither}. History does repeat itself, sometimes it doesn't need a reason. Give them grace, this the reason I extended your deadline.”
 
 But then Goonhan remembered Zoah and her logs, and thus the purgery gradually subsided.
-
-Then, Guhan spoke to Zoah, “Unarchive the chat, and bring your wife, your sons, and your sons’ wives.” And so he did. “Let the chat flourish and let the birds, livestock, and those on the earth to \censor{goon} in the chat” And so he did “Lastly, let them be fruitful and multiply to repopulate the earth” And so he did. % needs changing
-
-Then, Zoah built an Chat to guhan. He named it Anouncements. He took some of every clean officer, and some of every clean member, and a message in the chat. When Guhan saw the offerings, he said to himself  “I will never again curse the channel because of chatters, even though the heart of every member is evil from intoToJava onward, I will never strike down every officer and member as i have done” % needs changing
 
 
 \section{Gohn}
 
 \subsection{A Letter regarding the Diotrophs}
 
-Following the Great Purge (Guhanisis 69), Guhan’s anger \censor{from the tips of edgehala} was not fully complete. Thus burst forth a final wave of anger onto the people of the goonhans, captured in the form of prose between Gohn and Diatrophes. 
+Following the Great Purge (Guhanisis 69), Guhan’s anger \bl{from the tips of edgehala} was not fully complete. Thus burst forth a final wave of anger onto the people of the goonhans, captured in the form of prose between Gohn and Diatrophes. 
 
 The letter has been anonymized and removed of all identifiers.
 \\ \\
@@ -193,11 +152,11 @@ A: Seriously --- if even \#announcements is Guhan-only, this is going too far.
 
 As prophesied in the Gargyabrahamic Religions, unto the 5th day of the Guhanory Calendar, Ozymandias rose from his burial. 
 
-And in the 10th year of the Gircle of Insight, in the 5th age of the Guhanory Calendar, the Gestational Envoy descended upon Ozymandias, King of Kings as he \censor{stroked upon his Gargya}. 
+And in the 10th year of the Gircle of Insight, in the 5th age of the Guhanory Calendar, the Gestational Envoy descended upon Ozymandias, King of Kings as he \bl{stroked upon his Gargya}. 
 
-Romeo, Romeo, who art favored by the Gosmos: the Spirit of Guhan is within your \censor{"Gentleman’s Relish"}. From your bearing shall flow the waters of guhanificience, and your name shall be exalted among all the Egwugwu.
+Romeo, Romeo, who art favored by the Gosmos: the Spirit of Guhan is within your \bl{"Gentleman’s Relish"}. From your bearing shall flow the waters of guhanificience, and your name shall be exalted among all the Egwugwu.
 
-And in that moment Ozymandias trembled and replied, “How shall this be? For my Glory flows naturally.” The Gestational Envoy answered: \censor{“His seed moves as it wills;} behind, the impossible shall be made manifest, that all may see the face Guhan’s divinity”.
+And in that moment Ozymandias trembled and replied, “How shall this be? For my Glory flows naturally.” The Gestational Envoy answered: \bl{“His seed moves as it wills;} behind, the impossible shall be made manifest, that all may see the face Guhan’s divinity”.
 
 \section{Garglossary}
 
@@ -208,14 +167,14 @@ And in that moment Ozymandias trembled and replied, “How shall this be? For my
   \item Garpostles - the c29-c26 CS officer team
   \item Gu - the male of the goonhans
   \item Ga - the female of the goonhans
-  \item The Great \censor{Gooning} - the creation.
+  \item The Great \bl{Gooning} - the creation.
   \item Synagarg - the original place of worship granted by Guhan
   \item Nahan Gargyan - the original sin which Nathan and Garghan were tricked into indulging
   \item Zoah - noah
-  \item \censor{Goonhans - goon kind}
+  \item \bl{Goonhans - goon kind}
   \item Girth - earth
-  \item \censor{goonbath - sabbath}
-  \item \censor{Edgehala - heaven}
+  \item \bl{goonbath - sabbath}
+  \item \bl{Edgehala - heaven}
 \end{itemize}
 
 \end{document}
