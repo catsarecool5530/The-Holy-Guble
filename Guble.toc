@@ -4,7 +4,6 @@
 \contentsline {subsection}{\numberline {1.2}Gu And Ga in the Gargyan}{3}{subsection.1.2}%
 \contentsline {subsection}{\numberline {1.3}The Purge (Guhanisis 69)}{3}{subsection.1.3}%
 \contentsline {section}{\numberline {2}Gohn}{4}{section.2}%
-\contentsline {subsection}{\numberline {2.1}A Letter regarding the Diotrophs}{4}{subsection.2.1}%
 \contentsline {section}{\numberline {3}Gooneronomy}{5}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Vaishnavi and the Exogoon}{5}{subsection.3.1}%
 \contentsline {section}{\numberline {4}Gathew (Matthew)}{5}{section.4}%
